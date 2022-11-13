@@ -19,3 +19,32 @@ public:
     }
 };
 
+//easy to understand and explain
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        
+      int maxi = INT_MIN;
+      int curr = 1;
+      int size = nums.size();
+      
+      for(int i = 0; i < size; i++){
+        
+          curr *= nums[i];
+          maxi = max(maxi,curr);
+        
+          if(curr==0) curr = 1;
+      }
+      
+      curr = 1;
+      for(int i = size - 1; i>=0;i--){
+        
+        curr *= nums[i];
+        maxi = max(maxi,curr);
+        
+        if(!curr) curr = 1;
+      }
+      
+      return maxi;
+    }
+};
